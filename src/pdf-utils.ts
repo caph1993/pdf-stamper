@@ -1,8 +1,9 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 import { writeFile, readFile } from '@tauri-apps/plugin-fs'
-import { open } from '@tauri-apps/plugin-dialog'
+import { save } from '@tauri-apps/plugin-dialog'
 
-export async function mergeAndStamp(buffers: ArrayBuffer[], logoPath: string | null = null) {
+
+export async function mergeAndStamp(buffers: ArrayBuffer[], logoPath: string | null = null, firstFileName: string | null = null) {
   const merged = await PDFDocument.create()
   console.log('Merging PDF files...')
 
@@ -25,7 +26,7 @@ export async function mergeAndStamp(buffers: ArrayBuffer[], logoPath: string | n
   }
 
   pages.forEach((page, i) => {
-    const { width, height } = page.getSize()
+    const { width } = page.getSize()
 
     const text = `Page ${i + 1} of ${pages.length}`
     const fontSize = 10
@@ -73,14 +74,17 @@ export async function mergeAndStamp(buffers: ArrayBuffer[], logoPath: string | n
 
   const pdfBytes = await merged.save()
 
-  const savePath = await open({
+  let defaultPath
+  if (firstFileName) defaultPath = firstFileName.replace(/\.pdf$/i, '-stamped.pdf')
+
+  const savePath = await save({
     title: 'Save merged PDF',
-    directory: false,
-    multiple: false,
+    defaultPath,
     filters: [{ name: 'PDF', extensions: ['pdf'] }]
   })
 
   if (typeof savePath === 'string') {
     await writeFile(savePath, new Uint8Array(pdfBytes));
+    alert('Done!')
   }
 }

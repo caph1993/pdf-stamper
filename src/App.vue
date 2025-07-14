@@ -31,7 +31,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { mergeAndStamp as mergeAndStampPDF } from './pdf-utils';
-
 import { open } from '@tauri-apps/plugin-dialog'
 
 
@@ -64,10 +63,9 @@ function onReorder(targetIndex: number) {
 }
 
 async function mergeAndStamp() {
-  console.log('Merging and stamping PDFs:', pdfFiles.value)
+  const firstFileName = pdfFiles.value[0]?.name || null;
   const buffers = await Promise.all(pdfFiles.value.map(f => f.arrayBuffer()))
-  await mergeAndStampPDF(buffers, logoPath.value)
-  alert('Done!')
+  await mergeAndStampPDF(buffers, logoPath.value, firstFileName)
 }
 
 
@@ -78,13 +76,14 @@ function onFileSelect(e: Event) {
   input.value = '' // allow re-selection of same files
 }
 
+
 const logoPath = ref<string | null>(null)
 
 async function selectLogo() {
   const file = await open({
     title: 'Select PNG logo',
     multiple: false,
-    filters: [{ name: 'PNG Images', extensions: ['png'] }]
+    filters: [{ name: 'PNG/JPEG Images', extensions: ['png', 'jpg'] }]
   })
   if (typeof file === 'string') {
     logoPath.value = file
