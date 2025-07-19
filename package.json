@@ -1,7 +1,7 @@
 {
   "name": "pdf-stamper",
   "private": true,
-  "version": "0.1.9",
+  "version": "0.1.10",
   "type": "module",
   "scripts": {
     "publish-release": "bumpp package.json src-tauri/tauri.conf.json --tag app-v%s",
