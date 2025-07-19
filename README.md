@@ -19,10 +19,15 @@ And run the downloaded file.
 
 This app uses Tauri + Vue + TypeScript
 
-Clone this repo. These commands are the most relevant:
+Clone this repo, install the [tauri prerequisites](https://v2.tauri.app/start/prerequisites/), including [rust](https://v2.tauri.app/start/prerequisites/#rust), node and pnpm.
+
+Then, these commands are the most relevant:
 
 ```zsh
+pnpm install
 pnpm tauri dev
+
+# If you feel ready:
 pnpm tauri build
 pnpm publish-release
 ```
