@@ -1,33 +1,28 @@
 
-# Demo
+# pdf-stamper
 
+This app let's you concatenate several PDFs and add a stamp on each page, with a message.
 
+It works on Linux, Windows and MacOS.
+
+### Demo
 
 https://github.com/user-attachments/assets/a1d8a84a-0e6a-4952-a420-d3efa73e652f
 
+## Installation
 
+Download from the [latest release page](https://github.com/caph1993/pdf-stamper/releases/latest) the executable that corresponds to your OS: windows=`.exe`-or-`.msi`, macOS=`.dmg`, linux=`.AppImage`-or-`.deb`-or-`.rpm`. If it's an AppImage, you may need to set permission to execute via left click > properties.
 
----
+And run the downloaded file.
 
-# Tauri readme template
+## Development
 
-# Tauri + Vue + TypeScript
+This app uses Tauri + Vue + TypeScript
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Clone this repo. These commands are the most relevant:
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
-
-
-
-
+```zsh
+pnpm tauri dev
+pnpm tauri build
+pnpm publish-release
+```
