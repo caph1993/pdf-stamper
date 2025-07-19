@@ -1,11 +1,12 @@
+<p align="center">
+  <img width="128" height="128" alt="Image" src="https://raw.githubusercontent.com/caph1993/pdf-stamper/a11db737b9811afb8c080d00248d4d44c0c2e309/src-tauri/icons/icon-128.png" />
+</p>
 
-# pdf-stamper
+<h1 align="center">pdf-stamper</h1>
 
-This app let's you concatenate several PDFs and add a stamp on each page, with a message.
-
-It works on Linux, Windows and MacOS.
-
-### Demo
+<p align="center">
+  A small tool to concatenate and stamp PDFs. Works in Linux, Windows and MacOS.
+</p>
 
 https://github.com/user-attachments/assets/a1d8a84a-0e6a-4952-a420-d3efa73e652f
 
