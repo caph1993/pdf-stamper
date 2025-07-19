@@ -1,5 +1,8 @@
 name: Build & Release Tauri App
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
